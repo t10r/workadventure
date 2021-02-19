@@ -17,6 +17,9 @@ services:
       - front
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/dynamic_conf.yml:/dynamic_conf.yml
+    labels:
+      - "providers.file.filename=/dynamic_conf.yml"
 
   front:
     image: thecodingmachine/nodejs:14
